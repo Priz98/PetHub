@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
-
     <style>
         /* Include the enhanced CSS here */
         /* General reset */
@@ -38,158 +34,30 @@
             background-color: #fce7b7;
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        .login-container:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Title */
-        .login-container h2 {
-            text-align: center;
-            color: #333333;
-            margin-bottom: 20px;
-            font-weight: 500;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        .login-text h2 {
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-
-        /* Form labels */
-        label {
-            display: block;
-            font-size: 0.9rem;
-            color: #555555;
-            margin-bottom: 8px;
-            margin-top: 15px;
-        }
-
-        /* Input styling */
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #fafafa;
-            transition: border-color 0.3s ease;
-            font-size: 1rem;
-            color: #333333;
-        }
-
-        input:focus {
-            border-color: #c64c8b;
-            outline: none;
-            background-color: #ffffff;
-        }
-
-        /* Error messages */
-        .error {
-            color: #e74c3c;
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-
-        /* Button styling */
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            background-color: #eb588e;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #f78bb3;
-        }
-
-        button:focus {
-            outline: none;
-            background-color: #eb588e;
-        }
-
-        /* Responsive design */
-        @media (max-width: 600px) {
-            .login-container {
-                padding: 30px;
-                max-width: 100%;
-            }
         }
     </style>
 </head>
 <body>
-
     <div class="login-container">
-        <h2 id="login-text">Login</h2>
         <form id="loginForm">
-            <labelfor="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter your username">
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Enter your email">
-            <div id="emailError" class="error"></div>
-
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter your password">
-            <div id="passwordError" class="error"></div>
-
-            <button id="submit" type="submit" onclick="signUp()">Login</button>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
         </form>
     </div>
-
-    <script type="module">
-
-            const firebaseApp = firebase.initializeApp({ 
-                apiKey: "AIzaSyCFnBSCP9itgXfJ54PA3JYaFjRcR1jpGFo",
-                authDomain: "pet-care-web-application.firebaseapp.com",
-                databaseURL: "https://pet-care-web-application-default-rtdb.firebaseio.com",
-                projectId: "pet-care-web-application",
-                storageBucket: "pet-care-web-application.appspot.com",
-                messagingSenderId: "275661497366",
-                appId: "1:275661497366:web:7cf15c6fd8e2b98b230137",
-                measurementId: "G-Z9YM3KEQRJ"
-             });
-            const db = firebaseApp.firestore(); 
-            const auth = firebaseApp.auth();
-
-            const signUp = () => {
-                document.getElementById('loginForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const username =   document.getElementById("username").value; 
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                console.log(username,email, password)
-                // firebase code
-                firebase.auth().createUserWithEmailAndPassword(username,email,password)
-                    .then((result) => {
-                        // Signed in 
-                        document.write("You are Signed Up")
-                        console.log(result)
-                        // ...
-                    })
-                    .catch((error) => {
-                        console.log(error.code);
-                        console.log(error.message)
-                        // ..
-                    });
-                }
-            }
-        
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            window.location.href = 'index.html';
+        });
     </script>
-
 </body>
 </html>
