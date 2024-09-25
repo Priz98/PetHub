@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #registerForm {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form action="index.html" method="post" id="loginForm">
+        <h2 id="login-text">Login</h2>
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Enter your email">
+            <div id="emailError" class="error"></div>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Enter your password">
+            <div id="passwordError" class="error"></div>
+
+            <button type="submit">Login</button>
+            <p class="registration-link">Don't have an account? <a href="new3.html" id="register-link">Register</a></p>
+        </form>
+</div>
+</body>
+</html>

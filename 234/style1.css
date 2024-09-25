@@ -1,0 +1,161 @@
+ /* Include the enhanced CSS here */
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            background-image: url('petphoto.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents repeating the image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .Register-container {
+            background-color: #fce7b7;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .Register-container:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Title */
+        .Register-container h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        
+        .Register-text h2 {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Login container */
+        .login-container {
+            background-color: #fce7b7;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            transition: box-shadow 0.3s ease-in-out;
+            align-items: center;
+        }
+        
+        .login-container:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .round-image {
+            width: 150px; /* Adjust the size as needed */
+            height: 150px; /* Keep the height equal to width for a perfect circle */
+            border-radius: 50%; /* Makes the image round */
+            object-fit:cover  ; /* Ensures the image covers the entire area */
+            border: 2px solid #ccc; /* Optional: adds a border around the image */
+            text-align:center;
+            margin-left:27%;
+            border-color: blueviolet;
+
+        }
+        
+        /* Title */
+        .login-container h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .login-text h2 {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+
+        /* Form labels */
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: #555555;
+            margin-bottom: 8px;
+            margin-top: 15px;
+        }
+
+        /* Input styling */
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fafafa;
+            transition: border-color 0.3s ease;
+            font-size: 1rem;
+            color: #333333;
+        }
+
+        input:focus {
+            border-color: #c64c8b;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        /* Error messages */
+        .error {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #eb588e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f78bb3;
+        }
+
+        button:focus {
+            outline: none;
+            background-color: #eb588e;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 30px;
+                max-width: 100%;
+            }
+        }
