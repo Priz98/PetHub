@@ -24,65 +24,39 @@ const userSchema = new mongoose.Schema({
    password: String,
    petname: String,
    pettype: String,
+   petbreed: String,
    petage: Number,
    petgender: String,
-   petdescription: String
 });
 
 const Users = mongoose.model("data", userSchema);
 
 // Routes
-app.get('/landing', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index2.html')); // Serve new3.html on root
-});
 app.get('/index', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html')); // Serve new3.html on root
 });
+
 
 app.get('/new3', (req, res) => {
   res.sendFile(path.join(__dirname, 'new3.html'));
 });
 
-app.post('/post', async (req, res) => {
+app.get('/new10', (req, res) => {
+  res.sendFile(path.join(__dirname, 'new10.html'));
+});
 
-  
+app.post('/post', async (req, res) => {
+ 
     console.log(req.body);
     const { name, email, password } = req.body;
-    try{
-    const existingUser = await Users.findOne({ name });
-    if (existingUser) {
-      return res.status(400).send("Please use some other username");
-    }
     const user = new Users({
       name,
       email,
       password
     })
     await user.save();
-    res.status(201).redirect('/landing');
-    }catch(error) {
-      console.error("Error during signup:", error);
-      res.status(500).send("Internal Server Error"); // Handle server errors
-  }
-
-});
-
-
-
-app.post('/login', async (req, res) => {
-  const { name, password } = req.body;
-  console.log(req.body);
-  try {
-    const user = await Users.findOne({ name });
-    if (!user || user.password !== password) {
-        return res.status(401).send("Incorrect username or password");   
-    }
-    console.log("Success")
-    res.status(200).redirect('/index');
-    // res.status(200).render("/index"); // Assuming you have a home template to render
-} catch (e) {
-    res.status(500).send("Server error");
-}
+    res.redirect('/index');
+  
 });
 
 

@@ -32,9 +32,6 @@ const userSchema = new mongoose.Schema({
 const Users = mongoose.model("data", userSchema);
 
 // Routes
-app.get('/landing', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index2.html')); // Serve new3.html on root
-});
 app.get('/index', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html')); // Serve new3.html on root
 });
@@ -51,7 +48,7 @@ app.post('/post', async (req, res) => {
     try{
     const existingUser = await Users.findOne({ name });
     if (existingUser) {
-      return res.status(400).send("Please use some other username");
+        return res.status(400).redirect("/new3");
     }
     const user = new Users({
       name,
@@ -59,7 +56,7 @@ app.post('/post', async (req, res) => {
       password
     })
     await user.save();
-    res.status(201).redirect('/landing');
+    res.status(201).redirect('/index');
     }catch(error) {
       console.error("Error during signup:", error);
       res.status(500).send("Internal Server Error"); // Handle server errors
@@ -71,15 +68,13 @@ app.post('/post', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   const { name, password } = req.body;
-  console.log(req.body);
+  
   try {
     const user = await Users.findOne({ name });
     if (!user || user.password !== password) {
-        return res.status(401).send("Incorrect username or password");   
+        return res.status(401).send("Incorrect username or password");
     }
-    console.log("Success")
-    res.status(200).redirect('/index');
-    // res.status(200).render("/index"); // Assuming you have a home template to render
+    res.status(200).render("/index"); // Assuming you have a home template to render
 } catch (e) {
     res.status(500).send("Server error");
 }

@@ -22,7 +22,7 @@ app.use(express.static(__dirname));
 // Create a new API endpoint to fetch user data
 app.get('/api/user', (req, res) => {
     db.collection('datas').findOne({
-        "name": "Manas Khairnar",
+        "name": "Priz98",
 
     }, function(err, doc) {
         if (err) {

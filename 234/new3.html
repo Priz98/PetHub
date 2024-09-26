@@ -14,11 +14,10 @@
 </head>
 <body>
     <div class="login-container">
-        <form action="/login" method="post1" id="loginForm">
+        <form action="/login" method="post" id="loginForm">
         <h2 id="login-text">Login</h2>
-            <label for="email">Email:</label>
-            <input type="email" name="email" placeholder="Enter your email">
-            <div id="emailError" class="error"></div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Enter your name">
 
             <label for="password">Password:</label>
             <input type="password" name="password" placeholder="Enter your password">
@@ -52,5 +51,8 @@
             document.getElementById('registerForm').style.display = 'block';
         });
     </script>
+
+    <script src="client.js"></script>
+    
 </body>
 </html>
